@@ -11,6 +11,7 @@ License: GPL/LGPL
 Group: Networking/Remote access
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: gtk2-devel >= 2.4.0
+BuildRequires: libgcrypt-devel
 BuildRequires: perl-XML-Parser
 
 %description
