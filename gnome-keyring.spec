@@ -3,7 +3,7 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.19.4
+Version: 2.19.4.1
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 URL: http://www.gnome.org/
