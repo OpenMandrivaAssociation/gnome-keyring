@@ -3,7 +3,7 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.19.5
+Version: 2.19.6
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 URL: http://www.gnome.org/
@@ -12,6 +12,7 @@ Group: Networking/Remote access
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: gtk2-devel >= 2.4.0
 BuildRequires: libgcrypt-devel
+BuildRequires: pam-devel
 BuildRequires: perl-XML-Parser
 
 %description
@@ -65,8 +66,9 @@ can be made public for any application to use.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%makeinstall_std
+mkdir -p %buildroot/%_lib/security
+%makeinstall_std install-pam PAM_DEST_DIR=%buildroot/%_lib/security
+rm -f %buildroot%_libdir/pam_gnome_keyring.*
 
 %find_lang %{name}
 
@@ -81,6 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README NEWS TODO COPYING
 %{_bindir}/gnome-keyring-daemon
 %_libexecdir/gnome-keyring-ask
+/%_lib/security/pam_gnome_keyring*.so
 
 %files -n %{lib_name}
 %defattr(-,root,root)
