@@ -1,10 +1,11 @@
 %define lib_major 0
-%define lib_name %mklibname %{name} %{lib_major}
+%define libname %mklibname %{name} %{lib_major}
+%define libnamedev %mklibname -d %{name}
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.19.6.1
-Release: %mkrel 2
+Version: 2.19.90
+Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 URL: http://www.gnome.org/
 License: GPL/LGPL
@@ -25,12 +26,12 @@ The program can manage several keyrings, each with its own master
 password, and there is also a session keyring which is never stored to
 disk, but forgotten when the session ends.
 
-%package -n %{lib_name}
+%package -n %{libname}
 Group: System/Libraries
 Summary: Library for integration with the gnome keyring system
 Requires: %{name} >= %{version}-%{release}
 
-%description -n %{lib_name}
+%description -n %{libname}
 The library libgnome-keyring is used by applications to integrate with
 the gnome keyring system. However, at this point the library hasn't been
 tested and used enought to consider the API to be publically
@@ -40,14 +41,15 @@ gnome-keyring API will turn out useful and good, so that later it
 can be made public for any application to use.
 
 
-%package -n %{lib_name}-devel
+%package -n %{libnamedev}
 Group: Development/C
 Summary: Library for integration with the gnome keyring system
-Requires: %{lib_name} = %{version}
+Requires: %{libname} = %{version}
 Provides: lib%{name}-devel = %{version}-%{release}
 Provides: %{name}-devel = %{version}-%{release}
+Obsoletes: %mklibname -d %name 0
 
-%description -n %{lib_name}-devel
+%description -n %{libnamedev}
 The library libgnome-keyring is used by applications to integrate with
 the gnome keyring system. However, at this point the library hasn't been
 tested and used enought to consider the API to be publically
@@ -75,8 +77,8 @@ rm -f %buildroot%_libdir/pam_gnome_keyring.*
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -n %{lib_name} -p /sbin/ldconfig
-%postun -n %{lib_name} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -85,11 +87,11 @@ rm -rf $RPM_BUILD_ROOT
 %_libexecdir/gnome-keyring-ask
 /%_lib/security/pam_gnome_keyring*.so
 
-%files -n %{lib_name}
+%files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/libgnome-keyring.so.%{lib_major}*
 
-%files -n %{lib_name}-devel
+%files -n %{libnamedev}
 %defattr(-,root,root)
 %doc doc/*.txt COPYING.LIB ChangeLog
 %{_libdir}/libgnome-keyring.so
