@@ -4,7 +4,7 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.20.0
+Version: 2.20.1
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 URL: http://www.gnome.org/
@@ -85,7 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README NEWS TODO COPYING
 %{_bindir}/gnome-keyring-daemon
 %_libexecdir/gnome-keyring-ask
-/%_lib/security/pam_gnome_keyring*.so
+/%_lib/security/pam_gnome_keyring*.*
 
 %files -n %{libname}
 %defattr(-,root,root)
