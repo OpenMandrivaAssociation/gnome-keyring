@@ -4,11 +4,9 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.20.2
-Release: %mkrel 2
+Version: 2.21.3
+Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
-# gw from svn: fix for bug #500500 (TMPDIR for the pam module)
-Patch: gnome-keyring-pam-environment.patch
 URL: http://www.gnome.org/
 License: GPL/LGPL
 Group: Networking/Remote access
@@ -16,6 +14,7 @@ BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: gtk2-devel >= 2.4.0
 BuildRequires: libgcrypt-devel
 BuildRequires: libhal-devel
+BuildRequires: libtasn1-devel
 BuildRequires: pam-devel
 BuildRequires: perl-XML-Parser
 
@@ -63,7 +62,6 @@ can be made public for any application to use.
 
 %prep
 %setup -q
-%patch -p2 -b .pam
 
 %build
 %configure2_5x
@@ -93,12 +91,14 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/libgnome-keyring.so.%{lib_major}*
+%{_libdir}/gnome-keyring-pkcs11.so.%{lib_major}*
 
 %files -n %{libnamedev}
 %defattr(-,root,root)
-%doc doc/*.txt COPYING.LIB ChangeLog
+%doc COPYING.LIB ChangeLog
 %{_libdir}/libgnome-keyring.so
-%attr(644,root,root) %{_libdir}/libgnome-keyring.la
+%{_libdir}/gnome-keyring-pkcs11.so
+%attr(644,root,root) %{_libdir}/*.la
 %dir %{_includedir}/gnome-keyring-1/
 %{_includedir}/gnome-keyring-1/*.h
 %{_libdir}/pkgconfig/gnome-keyring-1.pc
