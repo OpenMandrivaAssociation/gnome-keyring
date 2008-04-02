@@ -5,8 +5,10 @@
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
 Version: 2.22.0
-Release: %mkrel 1
+Release: %mkrel 2
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
+# (fc) 2.22.0-2mdv fix daemon startup through dbus (GNOME bug #522253)
+Patch0: gnome-keyring-2.22.0-dbusstart.patch
 URL: http://www.gnome.org/
 License: GPL/LGPL
 Group: Networking/Remote access
@@ -63,6 +65,7 @@ can be made public for any application to use.
 
 %prep
 %setup -q
+%patch0 -p1 -b .dbusstart
 
 %build
 %configure2_5x --with-pam-dir=/%_lib/security
