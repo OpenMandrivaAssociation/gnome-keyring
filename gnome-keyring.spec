@@ -4,11 +4,11 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.22.2
+Version: 2.22.3
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 URL: http://www.gnome.org/
-License: GPL/LGPL
+License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: gtk2-devel >= 2.4.0
