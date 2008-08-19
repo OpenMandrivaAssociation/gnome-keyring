@@ -18,7 +18,8 @@ BuildRequires: libgcrypt-devel
 BuildRequires: libhal-devel
 BuildRequires: libtasn1-devel
 BuildRequires: pam-devel
-BuildRequires: perl-XML-Parser
+BuildRequires: intltool
+BuildRequires: gtk-doc
 
 %description
 gnome-keyring is a program that keep password and other secrets for
