@@ -4,10 +4,9 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.23.90
+Version: 2.23.91
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
-Patch: gnome-keyring-2.23.90-linking.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
@@ -65,8 +64,6 @@ can be made public for any application to use.
 
 %prep
 %setup -q
-%patch -p1
-autoreconf
 
 %build
 %configure2_5x --with-pam-dir=/%_lib/security
