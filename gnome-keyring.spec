@@ -19,6 +19,8 @@ BuildRequires: libtasn1-devel
 BuildRequires: pam-devel
 BuildRequires: intltool
 BuildRequires: gtk-doc
+#gw libtool dep ?
+BuildRequires: dbus-glib-devel
 
 %description
 gnome-keyring is a program that keep password and other secrets for
