@@ -7,6 +7,7 @@ Name: gnome-keyring
 Version: 2.25.5
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
+Patch0: gnome-keyring-2.25.5-fix-linkage.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
@@ -65,8 +66,10 @@ can be made public for any application to use.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
+autoreconf
 #gw doesn't build otherwise:
 %define _disable_ld_no_undefined 1
 %configure2_5x --with-pam-dir=/%_lib/security
