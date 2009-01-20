@@ -79,7 +79,7 @@ autoreconf
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std LIBTOOL=%_bindir/libtool
-rm -f %buildroot/%_lib/security/*.la
+rm -f %buildroot/%_lib/security/{*.la,*.a} %buildroot%_libdir/*.a
 
 %find_lang %{name}
 
