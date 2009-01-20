@@ -21,6 +21,7 @@ BuildRequires: dbus-glib-devel
 BuildRequires: pam-devel
 BuildRequires: intltool
 BuildRequires: gtk-doc
+BuildRequires: libtool
 
 %description
 gnome-keyring is a program that keep password and other secrets for
@@ -72,12 +73,12 @@ can be made public for any application to use.
 autoreconf
 #gw doesn't build otherwise:
 %define _disable_ld_no_undefined 1
-%configure2_5x --with-pam-dir=/%_lib/security
-%make
+%configure2_5x --with-pam-dir=/%_lib/security --disable-static
+%make LIBTOOL=%_bindir/libtool
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall_std 
+%makeinstall_std LIBTOOL=%_bindir/libtool
 rm -f %buildroot/%_lib/security/*.la
 
 %find_lang %{name}
