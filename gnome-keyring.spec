@@ -4,10 +4,9 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.25.5
+Version: 2.25.90
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
-Patch0: gnome-keyring-2.25.5-fix-linkage.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
@@ -67,7 +66,6 @@ can be made public for any application to use.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 autoreconf
@@ -102,6 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README NEWS TODO COPYING
+%_sysconfdir/xdg/autostart/gnome-keyring-daemon.desktop
 %_sysconfdir/gconf/schemas/%name.schemas
 %{_bindir}/gnome-keyring
 %{_bindir}/gnome-keyring-daemon
@@ -109,7 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/gnome-keyring/
 /%_lib/security/pam_gnome_keyring*.so
 %_datadir/dbus-1/services/org.gnome.keyring.service
-%_datadir/gnome/autostart/gnome-keyring-daemon.desktop
+%_datadir/gcr
 
 %files -n %{libname}
 %defattr(-,root,root)
