@@ -5,8 +5,11 @@
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
 Version: 2.26.0
-Release: %mkrel 1
+Release: %mkrel 2
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
+#gw http://bugzilla.gnome.org/show_bug.cgi?id=575247
+# fix hanging ssh agent
+Patch: egg-endless-loop.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
@@ -67,19 +70,22 @@ can be made public for any application to use.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
-autoreconf
-#gw doesn't build otherwise:
-%define _disable_ld_no_undefined 1
-%configure2_5x --with-pam-dir=/%_lib/security --disable-static
-%make LIBTOOL=%_bindir/libtool
+%configure2_5x --with-pam-dir=/%_lib/security --disable-static \
+  --disable-schemas-install
+#gw for unstable cooker builds use:
+#--enable-debug
+#--enable-tests
+#or even:
+#--enable-valgrind
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall_std LIBTOOL=%_bindir/libtool
+%makeinstall_std
 rm -f %buildroot/%_lib/security/{*.la,*.a} %buildroot%_libdir/*.a
-
 %find_lang %{name}
 
 %clean
@@ -93,8 +99,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
 %endif
 
