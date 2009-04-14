@@ -4,12 +4,9 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.26.0
-Release: %mkrel 2
+Version: 2.26.1
+Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
-#gw http://bugzilla.gnome.org/show_bug.cgi?id=575247
-# fix hanging ssh agent
-Patch: egg-endless-loop.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
@@ -70,7 +67,6 @@ can be made public for any application to use.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 %configure2_5x --with-pam-dir=/%_lib/security --disable-static \
