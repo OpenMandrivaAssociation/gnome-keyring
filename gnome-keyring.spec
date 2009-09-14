@@ -15,7 +15,6 @@ BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: gtk2-devel >= 2.4.0
 BuildRequires: libGConf2-devel
 BuildRequires: libgcrypt-devel
-BuildRequires: libhal-devel
 BuildRequires: libtasn1-devel
 BuildRequires: dbus-glib-devel
 BuildRequires: pam-devel
@@ -86,6 +85,8 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 rm -f %buildroot/%_lib/security/{*.la,*.a} %buildroot%_libdir/*.a
 %find_lang %{name}
+
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
