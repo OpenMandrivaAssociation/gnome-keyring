@@ -5,7 +5,7 @@
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
 Version: 2.28.0
-Release: %mkrel 1
+Release: %mkrel 2
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 Patch: gnome-keyring-2.27.92-fix-linking.patch
 URL: http://www.gnome.org/
@@ -67,12 +67,12 @@ can be made public for any application to use.
 
 %prep
 %setup -q
-%patch -p1
+%patch -p1 -b .fix-linking
 autoreconf
 
 %build
 %configure2_5x --with-pam-dir=/%_lib/security --disable-static \
-  --disable-schemas-install
+  --disable-schemas-install --disable-acl-prompts
 #gw for unstable cooker builds use:
 #--enable-debug
 #--enable-tests
