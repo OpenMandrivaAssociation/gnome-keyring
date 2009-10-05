@@ -5,9 +5,11 @@
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
 Version: 2.28.0
-Release: %mkrel 2
+Release: %mkrel 3
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
-Patch: gnome-keyring-2.27.92-fix-linking.patch
+Patch0: gnome-keyring-2.27.92-fix-linking.patch
+# (fc) 2.28.0-3mdv fix 10s timeout at logout (GNOME bug #595698)
+Patch1: gnome-keyring-2.28.0-threads.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
@@ -67,7 +69,10 @@ can be made public for any application to use.
 
 %prep
 %setup -q
-%patch -p1 -b .fix-linking
+%patch0 -p1 -b .fix-linking
+%patch1 -p1 -b .threads
+
+#needed by patch0
 autoreconf
 
 %build
