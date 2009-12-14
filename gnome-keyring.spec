@@ -4,7 +4,7 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.28.1
+Version: 2.28.2
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 Patch0: gnome-keyring-2.27.92-fix-linking.patch
@@ -70,7 +70,7 @@ can be made public for any application to use.
 %patch0 -p1 -b .fix-linking
 
 #needed by patch0
-autoreconf
+autoreconf -fi
 
 %build
 %configure2_5x --with-pam-dir=/%_lib/security --disable-static \
