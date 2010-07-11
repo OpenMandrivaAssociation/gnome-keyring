@@ -6,16 +6,14 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.30.1
-Release: %mkrel 3
+Version: 2.30.3
+Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 Patch0: gnome-keyring-2.27.92-fix-linking.patch
 # Fedora patches that make the daemon exit on logout
 # https://bugzilla.gnome.org/show_bug.cgi?id=598494
 Patch2: gnome-keyring-2.29.4-die-on-session-exit.patch
 Patch3: gnome-keyring-2.28.1-nopass.patch 
-# (fc) 2.30.1-3mdv add missing service file (GNOME bug #611002) (GIT)
-Patch4: gnome-keyring-2.30.1-missing-service.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
@@ -78,9 +76,8 @@ can be made public for any application to use.
 %patch0 -p1 -b .fix-linking
 %patch2 -p1 -b .die-on-session-exit 
 %patch3 -p1 -b .no-pass
-%patch4 -p1 -b .missing-service
 
-#needed by patch0 & 4
+#needed by patch0:
 autoreconf -fi
 
 %build
