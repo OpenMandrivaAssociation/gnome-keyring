@@ -7,7 +7,7 @@
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
 Version: 2.30.3
-Release: %mkrel 1
+Release: %mkrel 2
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 Patch0: gnome-keyring-2.27.92-fix-linking.patch
 # Fedora patches that make the daemon exit on logout
@@ -28,6 +28,8 @@ BuildRequires: libtasn1-tools
 BuildRequires: intltool
 BuildRequires: gtk-doc
 BuildRequires: libtool
+#gw for keyring management GUI
+Suggests: seahorse
 
 %description
 gnome-keyring is a program that keep password and other secrets for
