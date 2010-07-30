@@ -6,8 +6,8 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.30.3
-Release: %mkrel 2
+Version: 2.31.4
+Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 Patch0: gnome-keyring-2.27.92-fix-linking.patch
 # Fedora patches that make the daemon exit on logout
@@ -117,6 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README NEWS
+%_sysconfdir/xdg/autostart/gnome-keyring-gpg.desktop
 %_sysconfdir/xdg/autostart/gnome-keyring-pkcs11.desktop
 %_sysconfdir/xdg/autostart/gnome-keyring-secrets.desktop
 %_sysconfdir/xdg/autostart/gnome-keyring-ssh.desktop
