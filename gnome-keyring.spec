@@ -6,14 +6,16 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.31.4
+Version: 2.31.91
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
-Patch0: gnome-keyring-2.27.92-fix-linking.patch
 # Fedora patches that make the daemon exit on logout
 # https://bugzilla.gnome.org/show_bug.cgi?id=598494
 Patch2: gnome-keyring-2.29.4-die-on-session-exit.patch
 Patch3: gnome-keyring-2.28.1-nopass.patch 
+#gw revert this
+#https://bugzilla.gnome.org/show_bug.cgi?id=628384
+Patch4: gnome-keyring-fix-pam-detection-on-apple.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
@@ -75,16 +77,16 @@ can be made public for any application to use.
 
 %prep
 %setup -q
-%patch0 -p1 -b .fix-linking
 %patch2 -p1 -b .die-on-session-exit 
 %patch3 -p1 -b .no-pass
+%patch4 -p1 -R
 
 #needed by patch0:
 autoreconf -fi
 
 %build
 %configure2_5x --with-pam-dir=/%_lib/security --disable-static \
-  --disable-schemas-install --disable-acl-prompts
+  --disable-schemas-install --disable-acl-prompts --enable-pam
 #gw for unstable cooker builds use:
 #--enable-debug
 #--enable-tests
@@ -103,17 +105,6 @@ rm -f %buildroot/%_lib/security/{*.la,*.a} %buildroot%_libdir/*.a
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-%post_install_gconf_schemas %name
-%preun
-%preun_uninstall_gconf_schemas %name
-
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README NEWS
@@ -121,7 +112,6 @@ rm -rf $RPM_BUILD_ROOT
 %_sysconfdir/xdg/autostart/gnome-keyring-pkcs11.desktop
 %_sysconfdir/xdg/autostart/gnome-keyring-secrets.desktop
 %_sysconfdir/xdg/autostart/gnome-keyring-ssh.desktop
-%_sysconfdir/gconf/schemas/%name.schemas
 %{_bindir}/gnome-keyring
 %{_bindir}/gnome-keyring-daemon
 %_libdir/gnome-keyring/
