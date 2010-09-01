@@ -7,8 +7,11 @@
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
 Version: 2.31.91
-Release: %mkrel 1
+Release: %mkrel 2
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
+#gw fix ssh key unlocking
+#https://bugzilla.gnome.org/show_bug.cgi?id=627815
+Patch0: gnome-keyring-fix-ssh-key-unlock.patch
 # Fedora patches that make the daemon exit on logout
 # https://bugzilla.gnome.org/show_bug.cgi?id=598494
 Patch2: gnome-keyring-2.29.4-die-on-session-exit.patch
@@ -77,6 +80,7 @@ can be made public for any application to use.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch2 -p1 -b .die-on-session-exit 
 %patch3 -p1 -b .no-pass
 %patch4 -p1 -R
