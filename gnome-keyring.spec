@@ -9,16 +9,10 @@ Name: gnome-keyring
 Version: 2.31.92
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
-#gw fix ssh key unlocking
-#https://bugzilla.gnome.org/show_bug.cgi?id=627815
-Patch0: gnome-keyring-fix-ssh-key-unlock.patch
 # Fedora patches that make the daemon exit on logout
 # https://bugzilla.gnome.org/show_bug.cgi?id=598494
 Patch2: gnome-keyring-2.29.4-die-on-session-exit.patch
 Patch3: gnome-keyring-2.28.1-nopass.patch 
-#gw revert this
-#https://bugzilla.gnome.org/show_bug.cgi?id=628384
-Patch4: gnome-keyring-fix-pam-detection-on-apple.patch
 URL: http://www.gnome.org/
 License: GPLv2+ and LGPLv2+
 Group: Networking/Remote access
