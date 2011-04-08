@@ -6,7 +6,7 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 2.32.1
+Version: 3.0.0
 Release: %mkrel 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 # Fedora patches that make the daemon exit on logout
@@ -76,7 +76,7 @@ can be made public for any application to use.
 
 %build
 %configure2_5x --with-pam-dir=/%_lib/security --disable-static \
-  --disable-acl-prompts --enable-pam
+  --enable-pam
 #gw for unstable cooker builds use:
 #--enable-debug
 #--enable-tests
@@ -87,10 +87,8 @@ can be made public for any application to use.
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-rm -f %buildroot/%_lib/security/{*.la,*.a} %buildroot%_libdir/*.a
+rm -f %buildroot/%_lib/security/{*.la,*.a} %buildroot%_libdir/*.a %buildroot%_libdir/pkcs11/*.la
 %find_lang %{name}
-
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -106,31 +104,27 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/gnome-keyring-daemon
 %_libdir/gnome-keyring/
 %_libexecdir/gnome-keyring-prompt
-%dir %_datadir/%name
-%dir %_datadir/%name/introspect
-%_datadir/%name/introspect/*.xml
-%dir %_datadir/%name/ui/
-%_datadir/%name/ui/*.ui
+%_datadir/%name
 /%_lib/security/pam_gnome_keyring*.so
+%_libdir/pkcs11/gnome-keyring-pkcs11.so
 %_datadir/dbus-1/services/org.gnome.keyring.service
 %_datadir/dbus-1/services/org.freedesktop.secrets.service
 %_datadir/gcr
 %_datadir/GConf/gsettings/*.convert
 %_datadir/glib-2.0/schemas/*.gschema.xml
+%_datadir/applications/gnome-keyring-prompt.desktop
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/libgp11.so.%{lib_major}*
 %{_libdir}/libgcr.so.%{lib_major}*
+%{_libdir}/libgck.so.%{lib_major}*
 
 %files -n %{libnamedev}
 %defattr(-,root,root)
 %doc COPYING.LIB ChangeLog
-%{_libdir}/libgp11.so
 %{_libdir}/libgcr.so
-%attr(644,root,root) %{_libdir}/*.la
-%{_includedir}/gp11/
-%{_includedir}/gcr
-%{_libdir}/pkgconfig/gp11-0.pc
-%{_libdir}/pkgconfig/gcr-0.pc
+%{_libdir}/libgck.so
+%{_libdir}/*.la
+%{_includedir}/*
+%{_libdir}/pkgconfig/*.pc
 %_datadir/gtk-doc/html/*
