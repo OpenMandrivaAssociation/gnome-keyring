@@ -76,7 +76,7 @@ can be made public for any application to use.
 
 %build
 %configure2_5x --with-pam-dir=/%_lib/security --disable-static \
-  --enable-pam
+  --enable-pam --with-gtk=2
 #gw for unstable cooker builds use:
 #--enable-debug
 #--enable-tests
