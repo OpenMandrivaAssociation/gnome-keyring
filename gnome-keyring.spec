@@ -7,7 +7,7 @@
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
 Version: 3.0.2
-Release: %mkrel 1
+Release: 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 # Fedora patches that make the daemon exit on logout
 # https://bugzilla.gnome.org/show_bug.cgi?id=598494
@@ -80,16 +80,11 @@ can be made public for any application to use.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 rm -f %buildroot/%_lib/security/{*.la,*.a} %buildroot%_libdir/*.a %buildroot%_libdir/pkcs11/*.la
 %find_lang %{name}
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc README NEWS
 %_sysconfdir/xdg/autostart/gnome-keyring-gpg.desktop
 %_sysconfdir/xdg/autostart/gnome-keyring-pkcs11.desktop
@@ -110,12 +105,10 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/applications/gnome-keyring-prompt.desktop
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libgcr.so.%{lib_major}*
 %{_libdir}/libgck.so.%{lib_major}*
 
 %files -n %{libnamedev}
-%defattr(-,root,root)
 %doc COPYING.LIB ChangeLog
 %{_libdir}/libgcr.so
 %{_libdir}/libgck.so
@@ -123,3 +116,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
 %_datadir/gtk-doc/html/*
+
