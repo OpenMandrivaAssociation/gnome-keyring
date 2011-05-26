@@ -6,7 +6,7 @@
 
 Summary: Keyring and password manager for the GNOME desktop
 Name: gnome-keyring
-Version: 3.0.2
+Version: 3.0.3
 Release: 1
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/%{name}-%{version}.tar.bz2
 # Fedora patches that make the daemon exit on logout
