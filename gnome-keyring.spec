@@ -34,6 +34,7 @@ BuildRequires:	libgcrypt-devel
 BuildRequires:	libtasn1-tools
 BuildRequires:	pam-devel
 BuildRequires:	intltool
+BuildRequires:	glib2.0-common
 BuildRequires:	gtk-doc
 #gw for keyring management GUI
 Suggests:	seahorse
