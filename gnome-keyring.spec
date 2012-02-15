@@ -105,7 +105,7 @@ can be made public for any application to use.
 	--disable-update-mime \
 	--disable-schemas-compile
 
-%make
+%make LIBS='-lgmodule-2.0'
 
 %install
 rm -rf %{buildroot}
