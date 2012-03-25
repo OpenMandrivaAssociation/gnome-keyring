@@ -14,12 +14,13 @@
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
 Version:	3.2.2
-Release:	2
+Release:	3
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 URL:		http://www.gnome.org/
 Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-
+# (tpg) patch from debian
+Patch0:		00git_rpc-layer-Correctly-handle-case-where-gnome-keyring-.patch
 BuildRequires:	pkgconfig(dbus-1) >= 1.0
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(glib-2.0) >= 2.25.0
@@ -115,7 +116,7 @@ rm -rf %{buildroot}
 #we don't want these
 find %{buildroot} -name "*.la" -exec rm -rf {} \;
 
-%find_lang %{name}
+%find_lang %{name} %{name}.lang
 
 %files -f %{name}.lang
 %doc README NEWS
@@ -159,4 +160,3 @@ find %{buildroot} -name "*.la" -exec rm -rf {} \;
 %{_libdir}/pkgconfig/gck-%{lib_api_gck}.pc
 %{_libdir}/pkgconfig/gcr-%{lib_api_gcr}.pc
 %doc %{_datadir}/gtk-doc/html/*
-
