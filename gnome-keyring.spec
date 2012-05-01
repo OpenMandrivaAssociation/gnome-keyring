@@ -10,8 +10,6 @@ License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 URL:		http://www.gnome.org/
 Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-# (tpg) patch from debian
-Patch0:		00git_rpc-layer-Correctly-handle-case-where-gnome-keyring-.patch
 
 BuildRequires:	intltool
 BuildRequires:	glib2.0-common
