@@ -14,6 +14,7 @@ Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}
 BuildRequires:	intltool
 BuildRequires:	glib2.0-common
 BuildRequires:	gtk-doc
+BuildRequires:	pam-devel
 BuildRequires:	pkgconfig(dbus-1) >= 1.0
 BuildRequires:	pkgconfig(gck-1) >= 3.3.4
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
