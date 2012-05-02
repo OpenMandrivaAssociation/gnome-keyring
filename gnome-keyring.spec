@@ -14,6 +14,7 @@ Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}
 BuildRequires:	intltool
 BuildRequires:	glib2.0-common
 BuildRequires:	gtk-doc
+BuildRequires:	libtasn1-tools
 BuildRequires:	pam-devel
 BuildRequires:	pkgconfig(dbus-1) >= 1.0
 BuildRequires:	pkgconfig(gck-1) >= 3.3.4
@@ -41,7 +42,6 @@ disk, but forgotten when the session ends.
 	--with-pam-dir=/%{_lib}/security \
 	--disable-static \
 	--enable-pam \
-	--disable-update-mime \
 	--disable-schemas-compile
 
 %make LIBS='-lgmodule-2.0 -lglib-2.0'
