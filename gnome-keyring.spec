@@ -63,7 +63,7 @@ disk, but forgotten when the session ends.
 %attr(755,root,root) %{_bindir}/%{name}-daemon
 %{_libdir}/%{name}
 %{_libdir}/pkcs11
-%{_lib}/security/pam_gnome_keyring*.so
+/%{_lib}/security/pam_gnome_keyring*.so
 %{_datadir}/dbus-1/services/org.gnome.keyring.service
 %{_datadir}/dbus-1/services/org.freedesktop.secrets.service
 %{_datadir}/GConf/gsettings/*.convert
