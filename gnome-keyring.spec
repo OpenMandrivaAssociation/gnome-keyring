@@ -57,7 +57,7 @@ disk, but forgotten when the session ends.
 %{_sysconfdir}/xdg/autostart/%{name}-pkcs11.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-secrets.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-ssh.desktop
-%{_sysconfdir}/pkcs11/modules/%{name}.module
+%{_datadir}/pkcs11/modules/%{name}.module
 %{_bindir}/%{name}
 %{_bindir}/%{name}-%{api}
 %attr(755,root,root) %{_bindir}/%{name}-daemon
@@ -68,4 +68,3 @@ disk, but forgotten when the session ends.
 %{_datadir}/dbus-1/services/org.freedesktop.secrets.service
 %{_datadir}/GConf/gsettings/*.convert
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
-/usr/share/p11-kit/modules/gnome-keyring.module
