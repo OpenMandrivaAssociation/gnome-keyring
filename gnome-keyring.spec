@@ -10,7 +10,6 @@ License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-
 BuildRequires:	intltool
 BuildRequires:	glib2.0-common
 BuildRequires:	gtk-doc
@@ -20,8 +19,9 @@ BuildRequires:	pkgconfig(dbus-1) >= 1.0
 BuildRequires:	pkgconfig(gck-1) >= 3.3.4
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:	pkgconfig(libtasn1)
-
+Requires:	at-spi2-core
 #gw for keyring management GUI
+Suggests:	gcr
 Suggests:	seahorse
 
 %description
