@@ -4,8 +4,8 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	3.8.2
-Release:	7
+Version:	3.14.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
@@ -68,3 +68,4 @@ disk, but forgotten when the session ends.
 %{_datadir}/dbus-1/services/org.freedesktop.secrets.service
 %{_datadir}/GConf/gsettings/*.convert
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
+%{_mandir}/man1/*
