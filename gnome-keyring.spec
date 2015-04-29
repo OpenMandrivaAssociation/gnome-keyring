@@ -4,7 +4,7 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	3.14.0
+Version:	 3.16.0
 Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
@@ -28,7 +28,7 @@ Suggests:	seahorse
 gnome-keyring is a program that keep password and other secrets for
 users. It is run as a damon in the session, similar to ssh-agent, and
 other applications can locate it by an environment variable.
- 
+
 The program can manage several keyrings, each with its own master
 password, and there is also a session keyring which is never stored to
 disk, but forgotten when the session ends.
