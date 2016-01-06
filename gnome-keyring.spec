@@ -4,7 +4,7 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	 3.16.0
+Version:	 3.18.3
 Release:	3
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
