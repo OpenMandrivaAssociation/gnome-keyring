@@ -53,7 +53,6 @@ disk, but forgotten when the session ends.
 
 %files -f %{name}.lang
 %doc README NEWS
-%{_sysconfdir}/xdg/autostart/%{name}-gpg.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-pkcs11.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-secrets.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-ssh.desktop
