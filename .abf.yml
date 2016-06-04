@@ -5,3 +5,4 @@ removed_sources:
   gnome-keyring-3.8.2.tar.xz: 0d5e9ad68a6d1cae0d7fafddcbbb9ffa1e769851
 sources:
   gnome-keyring-3.18.3.tar.xz: 74b49e36113afe0cb6e6752dcbc47c0cf89ae4a5
+  gnome-keyring-3.20.0.tar.xz: 9c2a1fa6e52ae03a819dcb3be25048cd8e38c8c4
