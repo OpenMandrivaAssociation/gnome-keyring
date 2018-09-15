@@ -18,6 +18,7 @@ BuildRequires:	pam-devel
 BuildRequires:	pkgconfig(dbus-1) >= 1.0
 BuildRequires:	pkgconfig(gck-1) >= 3.3.4
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
+BuildRequires:	pkgconfig(libcrypt)
 BuildRequires:	pkgconfig(libtasn1)
 Requires:	at-spi2-core
 #gw for keyring management GUI
