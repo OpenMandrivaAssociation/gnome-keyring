@@ -22,6 +22,7 @@ BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(libtasn1)
 BuildRequires:	pkgconfig(gcr-3)
+BuildRequires:	openssh-clients
 BuildRequires:	xsltproc
 Requires:	at-spi2-core
 #gw for keyring management GUI
