@@ -4,7 +4,7 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	3.20.0
+Version:	3.28.2
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
@@ -18,7 +18,12 @@ BuildRequires:	pam-devel
 BuildRequires:	pkgconfig(dbus-1) >= 1.0
 BuildRequires:	pkgconfig(gck-1) >= 3.3.4
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
+#BuildRequires:	pkgconfig(libcrypt)
+BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(libtasn1)
+BuildRequires:	pkgconfig(gcr-3)
+BuildRequires:	openssh-clients
+BuildRequires:	xsltproc
 Requires:	at-spi2-core
 #gw for keyring management GUI
 Suggests:	gcr
@@ -56,7 +61,7 @@ disk, but forgotten when the session ends.
 %{_sysconfdir}/xdg/autostart/%{name}-pkcs11.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-secrets.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-ssh.desktop
-%{_datadir}/p11-kit/modules/%{name}.module
+#{_datadir}/p11-kit/modules/%{name}.module
 %{_bindir}/%{name}
 %{_bindir}/%{name}-%{api}
 %attr(755,root,root) %{_bindir}/%{name}-daemon
