@@ -61,7 +61,7 @@ disk, but forgotten when the session ends.
 %{_sysconfdir}/xdg/autostart/%{name}-pkcs11.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-secrets.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-ssh.desktop
-%{_datadir}/p11-kit/modules/%{name}.module
+#{_datadir}/p11-kit/modules/%{name}.module
 %{_bindir}/%{name}
 %{_bindir}/%{name}-%{api}
 %attr(755,root,root) %{_bindir}/%{name}-daemon
