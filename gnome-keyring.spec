@@ -73,4 +73,5 @@ disk, but forgotten when the session ends.
 %{_datadir}/dbus-1/services/org.freedesktop.secrets.service
 %{_datadir}/GConf/gsettings/*.convert
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
+%{_datadir}/p11-kit/modules/gnome-keyring.module
 %{_mandir}/man1/*
