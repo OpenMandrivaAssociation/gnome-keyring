@@ -4,8 +4,8 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	3.28.2
-Release:	2
+Version:	3.31.91
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
@@ -24,10 +24,11 @@ BuildRequires:	pkgconfig(libtasn1)
 BuildRequires:	pkgconfig(gcr-3)
 BuildRequires:	openssh-clients
 BuildRequires:	xsltproc
+BuildRequires:	docbook-style-xsl
 Requires:	at-spi2-core
 #gw for keyring management GUI
-Suggests:	gcr
-Suggests:	seahorse
+Recommends:	gcr
+Recommends:	seahorse
 
 %description
 gnome-keyring is a program that keep password and other secrets for
@@ -49,10 +50,10 @@ disk, but forgotten when the session ends.
 	--enable-pam \
 	--disable-schemas-compile
 
-%make LIBS='-lgmodule-2.0 -lglib-2.0'
+%make_build LIBS='-lgmodule-2.0 -lglib-2.0'
 
 %install
-%makeinstall_std
+%make_install
 
 %find_lang %{name} %{name}.lang
 
