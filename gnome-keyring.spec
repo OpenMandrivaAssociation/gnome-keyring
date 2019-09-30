@@ -4,7 +4,7 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	3.31.91
+Version:	3.34.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
@@ -41,10 +41,10 @@ disk, but forgotten when the session ends.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
-%configure2_5x \
+%configure \
 	--with-pam-dir=/%{_lib}/security \
 	--disable-static \
 	--enable-pam \
