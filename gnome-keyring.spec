@@ -75,5 +75,5 @@ disk, but forgotten when the session ends.
 %{_datadir}/xdg-desktop-portal/portals/gnome-keyring.portal
 %{_datadir}/GConf/gsettings/*.convert
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
-%{_datadir}/p11-kit/modules/gnome-keyring.module
+%{_sysconfdir}/pkcs11/modules/gnome-keyring.module
 %{_mandir}/man1/*
