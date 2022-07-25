@@ -1,11 +1,11 @@
-%define url_ver	%(echo %{version}|cut -d. -f1,2)
+%define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define api	3
+%define api 3
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
 Version:	42.1
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
@@ -40,12 +40,11 @@ password, and there is also a session keyring which is never stored to
 disk, but forgotten when the session ends.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %configure \
-	--with-pam-dir=/%{_lib}/security \
+	--with-pam-dir=%{_libdir}/security \
 	--disable-static \
 	--enable-pam \
 	--disable-schemas-compile
@@ -68,12 +67,10 @@ disk, but forgotten when the session ends.
 %attr(755,root,root) %{_bindir}/%{name}-daemon
 %{_libdir}/%{name}
 %{_libdir}/pkcs11
-/%{_lib}/security/pam_gnome_keyring*.so
-%{_datadir}/dbus-1/services/org.gnome.keyring.service
-%{_datadir}/dbus-1/services/org.freedesktop.secrets.service
-%{_datadir}/dbus-1/services/org.freedesktop.impl.portal.Secret.service
+%{_libdir}/security/pam_gnome_keyring*.so
+%{_datadir}/dbus-1/services/*.service
 %{_datadir}/xdg-desktop-portal/portals/gnome-keyring.portal
 %{_datadir}/GConf/gsettings/*.convert
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_sysconfdir}/pkcs11/modules/gnome-keyring.module
-%{_mandir}/man1/*
+%doc %{_mandir}/man1/*
