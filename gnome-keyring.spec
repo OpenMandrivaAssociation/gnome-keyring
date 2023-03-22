@@ -21,6 +21,7 @@ BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
 #BuildRequires:	pkgconfig(libcrypt)
 BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(libtasn1)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(gcr-3)
 BuildRequires:	openssh-clients
 BuildRequires:	xsltproc
@@ -47,6 +48,7 @@ disk, but forgotten when the session ends.
 	--with-pam-dir=%{_libdir}/security \
 	--disable-static \
 	--enable-pam \
+	--with-systemd \
 	--disable-schemas-compile
 
 %make_build LIBS='-lgmodule-2.0 -lglib-2.0'
@@ -55,6 +57,12 @@ disk, but forgotten when the session ends.
 %make_install
 
 %find_lang %{name} %{name}.lang
+
+%post
+%systemd_user_post gnome-keyring-daemon.service
+ 
+%preun
+%systemd_user_preun gnome-keyring-daemon.service
 
 %files -f %{name}.lang
 %doc README NEWS
@@ -73,4 +81,6 @@ disk, but forgotten when the session ends.
 %{_datadir}/GConf/gsettings/*.convert
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_sysconfdir}/pkcs11/modules/gnome-keyring.module
-%doc %{_mandir}/man1/*
+%{_mandir}/man1/*	
+%{_userunitdir}/gnome-keyring-daemon.service
+%{_userunitdir}/gnome-keyring-daemon.socket
