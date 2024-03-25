@@ -4,12 +4,12 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	42.1
-Release:	6
+Version:	46.1
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
-Url:		http://www.gnome.org/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://www.gnome.org/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	intltool
 BuildRequires:	glib2.0-common
 BuildRequires:	gtk-doc
