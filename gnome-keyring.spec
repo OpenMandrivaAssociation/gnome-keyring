@@ -5,11 +5,12 @@
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
 Version:	46.2
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		https://www.gnome.org/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+BuildRequires:	mold
 BuildRequires:	intltool
 BuildRequires:	glib2.0-common
 BuildRequires:	gtk-doc
@@ -44,6 +45,7 @@ disk, but forgotten when the session ends.
 %autosetup -p1
 
 %build
+export LD=mold
 %configure \
 	--with-pam-dir=%{_libdir}/security \
 	--disable-static \
