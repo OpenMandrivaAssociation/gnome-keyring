@@ -22,7 +22,8 @@ BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
 #BuildRequires:	pkgconfig(libcrypt)
 BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(libtasn1)
-BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:	pkgconfig(libsystemd)
+BuildRequires:	pkgconfig(libcap-ng)
 BuildRequires:	pkgconfig(gcr-3)
 BuildRequires:	openssh-clients
 BuildRequires:	xsltproc
@@ -49,7 +50,8 @@ disk, but forgotten when the session ends.
            -Dpam=true \
            -Dsystemd=enabled \
            -Dpkcs11-config=%{_datadir}/p11-kit/modules \
-           -Dssh-agent=true
+           -Dssh-agent=true \
+           -Dselinux=disabled
 
 %meson_build
 
