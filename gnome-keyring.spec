@@ -4,12 +4,13 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	46.2
-Release:	2
+Version:	48.beta
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		https://www.gnome.org/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+BuildRequires:	meson
 BuildRequires:	intltool
 BuildRequires:	glib2.0-common
 BuildRequires:	gtk-doc
@@ -21,7 +22,8 @@ BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0
 #BuildRequires:	pkgconfig(libcrypt)
 BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	pkgconfig(libtasn1)
-BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:	pkgconfig(libsystemd)
+BuildRequires:	pkgconfig(libcap-ng)
 BuildRequires:	pkgconfig(gcr-3)
 BuildRequires:	openssh-clients
 BuildRequires:	xsltproc
@@ -44,17 +46,17 @@ disk, but forgotten when the session ends.
 %autosetup -p1
 
 %build
-%configure \
-	--with-pam-dir=%{_libdir}/security \
-	--disable-static \
-	--enable-pam \
-	--with-systemd \
-	--disable-schemas-compile
+%meson \
+           -Dpam=true \
+           -Dsystemd=enabled \
+           -Dpkcs11-config=%{_datadir}/p11-kit/modules \
+           -Dssh-agent=true \
+           -Dselinux=disabled
 
-%make_build LIBS='-lgmodule-2.0 -lglib-2.0'
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %find_lang %{name} %{name}.lang
 
