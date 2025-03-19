@@ -4,12 +4,19 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	48.beta
+Version:	48.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		https://www.gnome.org/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+# Not yet merged but hope this can fix issues with unlocking
+# https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/78
+# https://gitlab.gnome.org/GNOME/gnome-keyring/-/issues/165
+# https://bugzilla.redhat.com/show_bug.cgi?id=2349314
+# Ensure the login collection is registered after unlocking
+Patch0:           https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/78.patch
+
 BuildRequires:	meson
 BuildRequires:	intltool
 BuildRequires:	glib2.0-common
