@@ -5,7 +5,7 @@
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
 Version:	50.0
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		https://www.gnome.org/
