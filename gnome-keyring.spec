@@ -5,7 +5,7 @@
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
 Version:	50.0
-Release:	3
+Release:	4
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		https://www.gnome.org/
@@ -16,6 +16,8 @@ Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{ve
 # https://bugzilla.redhat.com/show_bug.cgi?id=2349314
 # Ensure the login collection is registered after unlocking
 Patch0:           https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/78.patch
+
+Patch1:           https://src.fedoraproject.org/rpms/gnome-keyring/raw/b7ebb6723044bb4d714e25fe1bbeacd5eb43eda1/f/prompt-crash.patch
 
 BuildRequires:	meson
 BuildRequires:	intltool
