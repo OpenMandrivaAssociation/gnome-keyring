@@ -4,20 +4,12 @@
 
 Summary:	Keyring and password manager for the GNOME desktop
 Name:		gnome-keyring
-Version:	50.0
-Release:	4
+Version:	51.1
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		https://www.gnome.org/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-# Not yet merged but hope this can fix issues with unlocking
-# https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/78
-# https://gitlab.gnome.org/GNOME/gnome-keyring/-/issues/165
-# https://bugzilla.redhat.com/show_bug.cgi?id=2349314
-# Ensure the login collection is registered after unlocking
-Patch0:           https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/78.patch
-
-Patch1:           https://src.fedoraproject.org/rpms/gnome-keyring/raw/b7ebb6723044bb4d714e25fe1bbeacd5eb43eda1/f/prompt-crash.patch
 
 BuildRequires:	meson
 BuildRequires:	intltool
@@ -80,7 +72,6 @@ disk, but forgotten when the session ends.
 %{_sysconfdir}/xdg/autostart/%{name}-pkcs11.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-secrets.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-ssh.desktop
-#{_datadir}/p11-kit/modules/%{name}.module
 %{_bindir}/%{name}
 %{_bindir}/%{name}-%{api}
 %attr(755,root,root) %{_bindir}/%{name}-daemon
@@ -89,7 +80,6 @@ disk, but forgotten when the session ends.
 %{_libdir}/security/pam_gnome_keyring*.so
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/xdg-desktop-portal/portals/gnome-keyring.portal
-%{_datadir}/GConf/gsettings/*.convert
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/p11-kit/modules/gnome-keyring.module
 %{_mandir}/man1/*	
